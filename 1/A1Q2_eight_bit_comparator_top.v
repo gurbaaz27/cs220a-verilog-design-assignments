@@ -9,7 +9,7 @@ module eight_bit_comparator_top;
     eight_bit_comparator COMPARE(A,B,Greater,Less,Equal);
     always @ (A or B or Greater or Equal or Less)
         begin
-        $display("A = %d, B = %d, Greater = %d, Less = %d, Equal = %d",A,B,Greater,Less,Equal);
+        $display("time=%d: A = %d, B = %d, Greater = %d, Less = %d, Equal = %d",$time,A,B,Greater,Less,Equal);
         end
    
     initial
