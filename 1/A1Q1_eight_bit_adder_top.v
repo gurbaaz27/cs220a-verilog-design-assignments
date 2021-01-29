@@ -9,7 +9,7 @@ module eight_bit_adder_top;
     eight_bit_adder ADDER (A, B, Cin, Sum, Carry);
     always @ (A or B or Cin or Sum or Carry)
         begin
-        $display("A = %d , B = %d, Cin = %d, Sum = %d, Carry = %d",A,B,Cin,Sum,Carry);
+        $display("A = %d, B = %d, Cin = %d, Sum = %d, Carry = %d",A,B,Cin,Sum,Carry);
         end
    
     initial
@@ -26,7 +26,7 @@ module eight_bit_adder_top;
          A = 50; B = 60; Cin = 0;
          #1
          $display("\n");
-         A = 20; B = 200; Cin = 0;
+         A = 200; B = 200; Cin = 0;
          #1
          $display("\n");
          A = 10; B = 10; Cin = 1;
