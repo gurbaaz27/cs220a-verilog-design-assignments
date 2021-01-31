@@ -30,6 +30,10 @@ following (replace N by your group number): Assignment#2 submission for Group#N
 ╰─ iverilog -o q1 A2Q1_decoder3to8.v A2Q1_encoder8to3.v A2Q1_top.v
 ╰─ vvp q1 
 ```
-
+2.
+```bash
+╰─ iverilog -o q2 A2Q2_priority_encoder8to3.v A2Q2_top.v
+╰─ vvp q2 
+```
 ---------------
 #### Jan 30, 2020 0:00hrs - Feb 5, 2020 23:59hrs
