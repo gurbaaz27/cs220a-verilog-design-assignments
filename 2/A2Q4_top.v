@@ -1,10 +1,10 @@
-`define TICK #1
 module top;
 
     reg clk;
     wire [3:0] Output;    
 
-    rotate M(clk, Output);
+    rotate ROTATE (clk, Output);
+
     always @( Output )
         begin
         $display("time:%d: Output = %b",$time,Output);
@@ -12,19 +12,17 @@ module top;
 
     initial
         begin 
-        #1000
+        #3100000
         $finish;
         end
 
     initial begin
         forever begin
-            clk = 0;
-            #5
-            $display("\n");
             clk = 1;
             #5
-            $display("\n");
             clk = 0;
+            #5
+            clk = 1;
         end
     end
 
