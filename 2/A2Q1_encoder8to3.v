@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-module encoder8to3( en_in , en_out);
-    input [7:0] en_in;
-    output wire [2:0] en_out;
-    assign en_out[0] =  en_in[7] | en_in[5] |  en_in[3] |  en_in[1] ;
-    assign en_out[1] =  en_in[7] | en_in[6] |  en_in[3] |  en_in[2] ;
-    assign en_out[2] =  en_in[7] | en_in[6] |  en_in[5] |  en_in[4] ;
-endmodule
-=======
 module encoder8to3 (in, out);
 
 	input [7:0] in;
@@ -26,5 +17,11 @@ module encoder8to3 (in, out);
             endcase
         end
 
+  // Method II:
+  // output wire [2:0] out;
+
+  // assign out[0] =  in[7] | in[5] |  in[3] |  in[1] ;
+  // assign out[1] =  in[7] | in[6] |  in[3] |  in[2] ;
+  // assign out[2] =  in[7] | in[6] |  in[5] |  in[4] ;
+
 endmodule
->>>>>>> 8aeae52f047563b70e4e3ffd1016595ce30fa0b0
