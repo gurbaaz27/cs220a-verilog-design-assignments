@@ -1,4 +1,4 @@
-module one_bit_full_comparator (a, b, greater , less ,equal , prev_greater, prev_less, prev_equal );
+module one_bit_full_comparator (a, b, greater , less , equal , prev_greater, prev_less, prev_equal);
 
    input a;
    input b;

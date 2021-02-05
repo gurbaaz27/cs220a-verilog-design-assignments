@@ -2,15 +2,14 @@ module eight_bit_comparator_top;
     reg [7:0] A;
     reg [7:0] B;
 
-    wire greater ;
-    wire less;
-    wire equal;
+    wire Greater ;
+    wire Less;
+    wire Equal;
 
-
-    eight_bit_comparator COMPARE(A,B,greater,less,equal);
-    always @ (A or B or greater or equal or less)
+    eight_bit_comparator COMPARE(A,B,Greater,Less,Equal);
+    always @ (A or B or Greater or Equal or Less)
         begin
-        $display("A = %d , B = %d, greater = %d, less = %d,  equal = %d",A,B,greater,less,equal);
+        $display("time=%d: A = %d, B = %d, Greater = %d, Less = %d, Equal = %d",$time,A,B,Greater,Less,Equal);
         end
    
     initial
