@@ -1,50 +1,4 @@
 module top;
-<<<<<<< HEAD
-reg [7:0] in;
-wire [2:0] out;
-
-
-priority_encoder pe(in  , out);
-always @(in or out)
-    begin 
-    $display("input = %b  output = %d",in,out);
-    end
-
-initial 
-    begin
-    #100
-    $finish;
-    end
-
-
-initial 
-    begin
-    in = 0;
-    #1
-    in = 1;
-    #1
-    in = 2;
-    #1
-    in = 32;
-    #1
-    in = 40;
-    #1
-    in = 64;
-    #1
-    in = 60;
-    #1
-    in = 200;
-    #1
-    in = 12;
-    #1
-    in = 36;
-    #1
-    in = 128;
-    end
-
-endmodule
-=======
-
 	reg [7:0] Input;    
     wire [2:0] Output;
 
@@ -63,30 +17,38 @@ endmodule
 
     initial
         begin
-         Input = 8'b10010000;
+         Input = 0;
          #1
          $display("\n");
-         Input = 8'b01000100;
+         Input = 1;
          #1
          $display("\n");
          Input = 2;
          #1
          $display("\n");
-         Input = 3;
+         Input = 32;
          #1
          $display("\n");
-         Input = 4;
+         Input = 40;
          #1
          $display("\n");
-         Input = 5;
+         Input = 64;
          #1
          $display("\n");
-         Input = 6;
+         Input = 60;
          #1
          $display("\n");
-         Input = 7;
+         Input = 200;
+         #1
+         $display("\n");
+         Input = 12;
+         #1
+         $display("\n");
+         Input = 36;
+         #1
+         $display("\n");
+         Input = 128;
         end
 
 
 endmodule
->>>>>>> 8aeae52f047563b70e4e3ffd1016595ce30fa0b0

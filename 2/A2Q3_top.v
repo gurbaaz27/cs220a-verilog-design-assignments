@@ -1,25 +1,28 @@
-`define TICK #1
 module top;
 
     reg clk;
-    wire out;
+    wire Output;
     
-    blink M(clk, out);
-    always @( out )begin
-        $display("<%d > %d",$time ,out);
-     end
-    initial begin 
-        #1000
+    blink BLINK (clk, Output);
+
+    always @( Output )
+        begin
+        $display("time:%d: Output = %b",$time,Output);
+        end
+
+    initial
+        begin 
+        #3100000
         $finish;
-    end
+        end
 
     initial begin
         forever begin
-        clk = 0;
-        #5
         clk = 1;
         #5
         clk = 0;
+        #5
+        clk = 1;
         end
     end
 

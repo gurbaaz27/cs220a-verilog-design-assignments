@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 `define TICK #2
 module fsm(bit, clk ,out);
     input bit ;
@@ -40,4 +41,25 @@ module fsm(bit, clk ,out);
     end
 
     
+=======
+module fsm (in, clk, out);
+
+	input in;
+	input clk;
+	reg a,b,c;
+	output wire out;
+
+	initial begin
+		a = 0; b = 0; c = 0;
+	end
+               
+	always @(posedge clk) begin 
+		a <= (~in & (c | a)) | (a & (b | c)) | (b & in);
+		b <= (a & b) | (~a & ~b & in) | (a & ~c & in);
+		c <= ~c | a | (b & in) | (~b & c & ~in);
+    end
+
+	assign out = ~a | b | ~c;
+
+>>>>>>> df3e2484c78eb20bae8180df20773f8ad1e10eda
 endmodule

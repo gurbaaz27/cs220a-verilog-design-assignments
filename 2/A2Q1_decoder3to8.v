@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-module decoder3to8(de_in,de_out);
-    input [2:0] de_in;
-    output wire [7:0] de_out;
-
-    assign de_out[0] = ~de_in[2] & ~de_in[1] & ~de_in[0];
-    assign de_out[1] = ~de_in[2] & ~de_in[1] &  de_in[0];
-    assign de_out[2] = ~de_in[2] &  de_in[1] & ~de_in[0];
-    assign de_out[3] = ~de_in[2] &  de_in[1] & ~de_in[0];
-    assign de_out[4] =  de_in[2] & ~de_in[1] & ~de_in[0];
-    assign de_out[5] =  de_in[2] & ~de_in[1] &  de_in[0];
-    assign de_out[6] =  de_in[2] &  de_in[1] & ~de_in[0];
-    assign de_out[7] =  de_in[2] &  de_in[1] &  de_in[0];
-endmodule
-=======
 module decoder3to8 (in, out);
 
 	input [2:0] in;
@@ -33,7 +18,9 @@ module decoder3to8 (in, out);
         endcase
     end
     
-    // output reg [7:0] out;    // if 2nd is to be used
+    // Method II:
+    
+    // output wire [7:0] out;
     // assign out[0] = ~in[2] & ~in[1] & ~in[0];
     // assign out[1] = ~in[2] & ~in[1] & in[0];
     // assign out[2] = ~in[2] & in[1] & ~in[0];
@@ -44,4 +31,3 @@ module decoder3to8 (in, out);
     // assign out[7] = in[2] & in[1] & in[0];
 
 endmodule
->>>>>>> 8aeae52f047563b70e4e3ffd1016595ce30fa0b0
