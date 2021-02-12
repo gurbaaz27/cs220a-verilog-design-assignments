@@ -28,4 +28,6 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── A3Q1_read.v<br>
 │   ├── A3Q2_fsm_top.v<br>
 │   ├── A3Q2_fsm.v<br>
+│   ├── Problem.txt<br>
+│   └── README.md<br>
 └── README.md<br>
