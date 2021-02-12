@@ -5,14 +5,15 @@ module top;
 
     fsm FSM (Input, clk, Output);
 
-    always @ ( posedge clk or Output )
-        begin
-        $display("time=%d: Input = %b, Output = %b",$time,Input,Output);
+    always @ ( negedge clk ) begin
+        if ($time > 0) begin
+            $display("time=%d: Input = %b, Output = %b",$time,Input,Output);
         end
+    end
    
     initial
         begin
-        #103
+        #110
         $finish;
         end
 
@@ -43,7 +44,7 @@ module top;
          #10
          Input = 0;
          #10
-         Input = 1;
+         Input = 0;
          #10
          Input = 0;
          #10

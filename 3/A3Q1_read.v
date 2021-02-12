@@ -1,19 +1,22 @@
 `define TICK #2 
 module read(clk, row_num ,input_valid, output_valid,out);
+
     input [3:0] row_num;
     input input_valid;
     input clk;
 
+    output reg [31:0] out;
+    output reg output_valid ;
+
     reg [31:0] bank [15:0];
-    output [31:0] out;
-    output output_valid ;
-    reg  [31:0] out;
-    reg output_valid ;
-    reg [4:0]open_row = 16 ;
-    reg [1:0]counter = 3;
+    reg [4:0]open_row;
+    reg [1:0]counter;
 
     initial begin
-        output_valid=0;
+        open_row = 16;
+        counter = 3;
+        output_valid = 0;
+
         bank[0] = 0;
         bank[1] = 1;
         bank[2] = 2;
@@ -41,19 +44,19 @@ module read(clk, row_num ,input_valid, output_valid,out);
             end
             else if (open_row == 16) begin
                 counter = 1;
-            end else begin
+            end 
+            else begin
                 counter = 0;   
             end
             open_row <= `TICK row_num;
         end
     
-        if(counter < 3)begin 
+        if(counter < 3) begin 
             counter <= `TICK counter + 1;
-            if(counter == 2)begin
+            if(counter == 2) begin
                output_valid <= `TICK 1'b1;
                out <= `TICK  bank[open_row];
             end
-
         end
     end
 

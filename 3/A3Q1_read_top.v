@@ -1,20 +1,20 @@
 `define TICK #2 
 module top;
 
-   reg clk;
-   reg input_valid;
-   reg [3:0] row_num;
-   wire output_valid;
-   wire [31:0] out;
+    reg clk;
+    reg input_valid;
+    reg [3:0] row_num;
+    wire output_valid;
+    wire [31:0] out;
 
-   reg [5:0]count_cycle;
+    reg [5:0]count_cycle;
    
-   read M(clk, row_num ,input_valid, output_valid,out);
+    read READ(clk, row_num ,input_valid, output_valid,out);
 
     always @(output_valid)
     begin
         if(output_valid == 1'b1)begin
-         $display("< %d > row_num= %d content= %d  count_cycle=> %d",$time ,row_num , out, count_cycle);
+         $display("time=%d: row_num = %d, content = %d, count_cycle => %d",$time ,row_num , out, count_cycle);
         end
     end
 
@@ -23,10 +23,10 @@ module top;
         count_cycle <= count_cycle+1;
     end
 
-   initial begin
+    initial begin
        #1000
        $finish;
-   end
+    end
 
     initial begin
         forever begin
@@ -35,8 +35,9 @@ module top;
         clk=1;
         #5
         clk=0;
-    end
+        end
     end 
+    
     initial begin
         count_cycle=0;
         #3
