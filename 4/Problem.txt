@@ -15,9 +15,10 @@ For example, at (0, 0) if it tries to move toward west or south it stays at (0 0
 move toward east three steps, it takes only two steps and stops at (15, 0). Two time units before each rising
 clock edge a new input is provided. The input comes in the form of a direction (two bits) and the number
 of steps (two bits). Write a module to compute the new coordinates of the worm based on the input using a
-five-bit adder/subtracter. The new coordinates are computed on each rising edge of the clock. Write a top
-module to test your design. You can display the new coordinates along with your inputs just before sending a
-new input.
+five-bit adder/subtracter. The new coordinates are computed on each rising edge of the clock, which is also
+an input to the module. Write a top module to test your design. You can display the new coordinates along
+with your inputs just before sending a new input. Simulate for ten clock cycles. The clock should have
+a period of ten time units and 50% duty cycle.
 
 Submission: Submit your verilog files named clearly. Prefix the file names for Q1 using A4Q1_ and those for Q2
 using A4_Q2_. Email the files as attachment to cs220spring2021submit@gmail.com. The subject line of the email

@@ -1,10 +1,10 @@
 module eight_bit_adder_top;
 
-    reg [7:0] A;
-    reg [7:0] B;
+    reg signed [7:0] A;
+    reg signed [7:0] B;
     reg Opcode;
 
-    wire [7:0] Sum;
+    wire signed [7:0] Sum;
     wire Carry;
     wire Overflow;
 
@@ -32,10 +32,10 @@ module eight_bit_adder_top;
          A = 50; B = 60; Opcode = 0;
          #1
          $display("\n");
-         A = 200; B = 200; Opcode = 0;
+         A = 110; B = 30; Opcode = 0;
          #1
          $display("\n");
-         A = 10; B = 10; Opcode = 1;
+         A = 10; B = -125; Opcode = 1;
          #1
          $display("\n");
          A = 1; B = 2; Opcode = 0;
@@ -47,10 +47,10 @@ module eight_bit_adder_top;
          A = 0; B = 0; Opcode = 1;
          #1
          $display("\n");
-         A = 255; B = 255; Opcode = 0;
+         A = -123; B = -6; Opcode = 0;
          #1
          $display("\n");
-         A = 128; B = 128; Opcode = 0;
+         A = 127; B = 127; Opcode = 0;
          #1
          $display("\n");
          A = 5; B = 6; Opcode = 1;         
