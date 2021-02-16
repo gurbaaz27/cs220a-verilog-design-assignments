@@ -28,6 +28,17 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── A3Q1_read.v<br>
 │   ├── A3Q2_fsm_top.v<br>
 │   ├── A3Q2_fsm.v<br>
-│   ├── Problem.txt<br>
-│   └── README.md<br>
+│   ├── Problem.txt<br>
+│   ├── README.md<br>
+├── 4<br>
+│   ├── A4Q1_eight_bit_adder.v<br>
+│   ├── A4Q1_one_bit_adder.v<br>
+│   ├── A4Q1_top.v<br>
+│   ├── A4Q2_compute_coordinates.v<br>
+│   ├── A4Q2_five_bit_adder.v<br>
+│   ├── A4Q2_one_bit_adder.v<br>
+│   ├── A4Q2.png<br>
+│   ├── A4Q2_top.v<br>
+│   ├── Problem.txt<br>
+│   └── README.md<br>
 └── README.md<br>

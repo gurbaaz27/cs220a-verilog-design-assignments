@@ -1,91 +1,93 @@
 module top;
+
     reg clk;
-    reg [4:0]x;
-    reg [4:0]y;
-    reg [1:0]steps;
-    reg [1:0]dir;
-    wire [4:0]fx;
-    wire [4:0]fy;
-    reg [4:0]outputx;
-    reg [4:0]outputy;
+    reg [1:0] Direction;
+    reg [1:0] Steps;
+    reg [4:0] X;
+    reg [4:0] Y;
+    wire [4:0] FX;
+    wire [4:0] FY;
+    reg [4:0] OutputX;
+    reg [4:0] OutputY;
 
-    dir d(x, y, steps, dir, fx, fy ,clk);
+    compute_coordinates COMPUTE_COORDINATES (clk, Direction, Steps, X, Y, FX, FY);
+
     always @ ( negedge clk ) begin
-
-        if ($time > 0) begin
-            $display("time=%d: (x,y) = %d %d, (fx,fy) = %d %d , steps =%d , dir=%d",$time,x,y,outputx,outputy,steps,dir);
+        if($time > 0) begin
+            $display("time=%d: dir = %d, steps = %d, old:(%d,%d), new:(%d,%d)",$time,Direction,Steps,X,Y,OutputX,OutputY);
         end
-    x = outputx;
-    y = outputy;
+        X = OutputX;
+        Y = OutputY;
+    end
+    
+    always @( FX or FY ) begin
+        if(FX[4] == 1) begin
+            if(Direction == 0) begin
+                OutputX <= 15;
+            end 
+            else begin
+                OutputX <= 0;
+            end
+        end 
+        else begin 
+            OutputX <= FX;
+        end
+
+        if(FY[4] == 1) begin
+            if(Direction == 2) begin
+                OutputY <= 15;
+            end 
+            else begin
+                OutputY <= 0;
+            end
+            end 
+        else begin 
+            OutputY <= FY;
+        end
     end
 
-   always @(fx or fy) begin
-        if(fx[4]==1) begin
-        if(dir == 0) begin
-           outputx <= 15;
-        end else begin
-           outputx <= 0;
-        end
-    end else begin 
-        outputx <= fx;
+    initial begin
+        X <= 0; 
+        Y <= 0;
     end
 
-
-    if(fy[4]==1) begin  
-        if(dir == 2) begin
-             outputy <= 15;
-        end else begin
-            outputy <= 0;
-        end
-    end else begin 
-        outputy <= fy;
-    end
-   end
-   
-    initial
-        begin
-        x <= 5'b00000; y <= 5'b00000;
-        #150
+    initial begin
+        $display("Direction =>\n\t0 : East\n\t1 : West\n\t2 : North\n\t3 : South\nSteps = {0,1,2,3}\nX = {0,....,15}(horizontal i.e. W-E)\nY = {0,....,15} (vertical i.e. N-S)");
+        #110
         $finish;
-        end
+    end
 
     initial begin
         forever begin
-         clk = 0;
-         #5        
-         clk = 1;
-         #5        
-         clk = 0;
+            clk = 0;
+            #5
+            clk = 1;
+            #5
+            clk = 0;
         end
     end
 
-    initial
-        begin
+    initial begin
          #3
-         steps = 0; dir = 0;
+         Direction = 0; Steps = 3;
+         #10         
+         Direction = 0; Steps = 3;
          #10
-         steps = 2; dir = 0;
+         Direction = 0; Steps = 2;
          #10
-         steps = 3; dir = 0;
+         Direction = 2; Steps = 2;
          #10
-         steps = 3; dir = 0;
+         Direction = 0; Steps = 1;
          #10
-         steps = 3; dir = 0;
+         Direction = 1; Steps = 2;
+         #10         
+         Direction = 3; Steps = 1;
          #10
-         steps = 3; dir = 0;
+         Direction = 0; Steps = 1;
          #10
-         steps = 3; dir = 0;
-         #10
-         steps = 3; dir = 0;
-         #10
-         steps = 3; dir = 1;
-         #10
-         steps = 2; dir = 2;
-         #10
-         steps = 3; dir = 3; 
-         #10
-         steps = 3; dir = 1;
-
-        end
+         Direction = 1; Steps = 2;
+         #10         
+         Direction = 3; Steps = 1;
+    end
 
 endmodule
