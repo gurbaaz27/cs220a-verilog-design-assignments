@@ -14,7 +14,7 @@ module top;
 
     always @ ( negedge clk ) begin
         if($time > 0) begin
-            $display("time=%d: dir = %d, steps = %d, old:(%d,%d), new:(%d,%d)",$time,Direction,Steps,X,Y,OutputX,OutputY);
+            $display("time=%g: dir = %d, steps = %d, old:(%d,%d), new:(%d,%d)",$time,Direction,Steps,X,Y,OutputX,OutputY);
         end
         X = OutputX;
         Y = OutputY;
@@ -83,12 +83,11 @@ module top;
          #10         
          Direction = 3; Steps = 1;
          #10
-         Direction = 0; Steps = 1;
+         Direction = 3; Steps = 2;
          #10
          Direction = 1; Steps = 2;
          #10         
-         Direction = 3; Steps = 1;
-         
+         Direction = 0; Steps = 1;         
     end
 
 endmodule

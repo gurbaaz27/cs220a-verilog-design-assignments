@@ -12,7 +12,7 @@ module eight_bit_adder_top;
 
     always @ (A or B or Opcode or Sum or Carry or Overflow)
         begin
-        $display("time=%d: A = %d, B = %d, Opcode = %b, Sum = %d, Carry = %d, Overflow = %b",$time,A,B,Opcode,Sum,Carry,Overflow);
+        $display("time=%g: A = %d, B = %d, Opcode = %b, Sum = %d, Carry = %d, Overflow = %b",$time,A,B,Opcode,Sum,Carry,Overflow);
         end
    
     initial
@@ -23,9 +23,6 @@ module eight_bit_adder_top;
 
     initial
         begin
-        /*****
-        put good test cases
-        ******/
          A = 100; B = 100; Opcode = 1;
          #1
          $display("\n");
