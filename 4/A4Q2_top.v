@@ -88,6 +88,7 @@ module top;
          Direction = 1; Steps = 2;
          #10         
          Direction = 3; Steps = 1;
+         
     end
 
 endmodule

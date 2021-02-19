@@ -32,25 +32,25 @@ module eight_bit_adder_top;
          A = 50; B = 60; Opcode = 0;
          #1
          $display("\n");
-         A = 110; B = 30; Opcode = 0;
+         A = 110; B = 30; Opcode = 1;
          #1
          $display("\n");
-         A = 10; B = -125; Opcode = 1;
+         A = -10; B = -12; Opcode = 1;
          #1
          $display("\n");
-         A = 1; B = 2; Opcode = 0;
+         A = 1; B = 25; Opcode = 1;
          #1
          $display("\n");
-         A = 20; B = 0; Opcode = 0;
+         A = 20; B = 100; Opcode = 0;
          #1
          $display("\n");
          A = 0; B = 0; Opcode = 1;
          #1
          $display("\n");
-         A = -123; B = -6; Opcode = 0;
+         A = -123; B = 6; Opcode = 0;
          #1
          $display("\n");
-         A = 127; B = 127; Opcode = 0;
+         A = 127; B = 120; Opcode = 1;
          #1
          $display("\n");
          A = 5; B = 6; Opcode = 1;         
