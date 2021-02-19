@@ -1,13 +1,13 @@
 module compute_coordinates (clk, dir, steps, x, y, fx, fy);
 
-	input clk;
-	input [1:0] dir;
-	input [1:0] steps;
+    input clk;
+    input [1:0] dir;
+    input [1:0] steps;
     input [4:0] x;
     input [4:0] y;
 
-	output wire [4:0] fx;
-	output wire [4:0] fy;
+    output wire [4:0] fx;
+    output wire [4:0] fy;
 
     reg [1:0] addx;
     reg [1:0] addy;
@@ -19,7 +19,7 @@ module compute_coordinates (clk, dir, steps, x, y, fx, fy);
 
     always @(posedge clk)
     begin
-		case(dir)
+        case(dir)
             2'b00 : begin
                 dirx <= 0;
                 diry <= 0;

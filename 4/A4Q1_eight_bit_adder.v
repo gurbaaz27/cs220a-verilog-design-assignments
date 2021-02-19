@@ -2,11 +2,11 @@ module eight_bit_adder (x, y, opcode, sum, carry_out, overflow);
 
 	input signed [7:0] x;
 	input signed[7:0] y;
-    input opcode;
+	input opcode;
 
 	output wire signed [7:0] sum;
 	output wire carry_out;
-    output wire overflow;
+	output wire overflow;
 
 	wire [6:0] intermediate_carry;
 
@@ -19,6 +19,6 @@ module eight_bit_adder (x, y, opcode, sum, carry_out, overflow);
 	one_bit_full_adder FA6 (x[6], y[6], intermediate_carry[5], opcode, sum[6], intermediate_carry[6]);
 	one_bit_full_adder FA7 (x[7], y[7], intermediate_carry[6], opcode, sum[7], carry_out);
 
-    assign overflow = (intermediate_carry[6] ^ carry_out == 1) ? 1 : 0;
+	assign overflow = (intermediate_carry[6] ^ carry_out == 1) ? 1 : 0;
 
 endmodule

@@ -2,10 +2,10 @@ module five_bit_adder (x, y, opcode, sum);
 
 	input [4:0] x;
 	input [4:0] y;
-    input opcode;
+	input opcode;
 
 	output wire [4:0] sum;
-    wire carry_out;
+	wire carry_out;
 
 	wire [3:0] intermediate_carry;
 
