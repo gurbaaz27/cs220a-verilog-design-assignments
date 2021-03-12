@@ -41,4 +41,15 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── A4Q2_top.v<br>
 │   ├── Problem.txt<br>
 │   └── README.md<br>
+├── 5<br>
+│   ├── A5Q1_fsm.v<br>
+│   ├── A5Q1_top.v<br>
+│   ├── A5Q2_compare.v<br>
+│   ├── A5Q2_compute_index.v<br>
+│   ├── A5Q2_top.v<br>
+│   ├── assignment5.pdf<br>
+│   ├── Makefile<br>
+│   ├── q1-diagram.png<br>
+│   └── q1.jpeg<br>
+│   └── README.md<br>
 └── README.md<br>

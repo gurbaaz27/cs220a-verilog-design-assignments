@@ -6,7 +6,7 @@ module fsm (y, clk, state);
 	output reg [3:0] state;
 
 	reg [2:0] dispatchROM1 [2:0]; 
-	reg [3:0] dispatchROM2 [2:0]; 
+	reg [3:0] dispatchROM2 [1:0]; 
 	reg [2:0] microcodeROM [12:0];
 
 	initial begin
