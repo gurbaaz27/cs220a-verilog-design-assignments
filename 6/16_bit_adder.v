@@ -5,7 +5,6 @@ module full_adder (x, y, opcode, sum, carry_out);
 	input opcode;
 	output wire signed [15:0] sum;
 	output wire carry_out;
-	//output wire overflow;
 
 	wire [14:0] intermediate_carry;
 
@@ -25,8 +24,6 @@ module full_adder (x, y, opcode, sum, carry_out);
     one_bit_full_adder FAd (x[13], y[13], intermediate_carry[12], opcode, sum[13], intermediate_carry[13]);
 	one_bit_full_adder FAe (x[14], y[14], intermediate_carry[13], opcode, sum[14], intermediate_carry[14]);
 	one_bit_full_adder FAf (x[15], y[15], intermediate_carry[14], opcode, sum[15], carry_out);
-	//one_bit_full_adder FA7 (x[7], y[7], intermediate_carry[15], opcode, sum[7], carry_out);
 
-	//assign overflow = (intermediate_carry[6] ^ carry_out == 1) ? 1 : 0;
 
 endmodule

@@ -1,6 +1,6 @@
-module process(clk,valid,read_adr1 ,read_adr2, write_adr ,data,done  ,read1, read2   );
+module process(clk,valid_instruction,read_adr1 ,read_adr2, write_adr ,data,done  ,read1, read2   );
 
-    input [2:0] valid;
+    input [2:0] valid_instruction;
     input [4:0] read_adr1;
     input [4:0] read_adr2;
     input [4:0] write_adr;
@@ -10,11 +10,9 @@ module process(clk,valid,read_adr1 ,read_adr2, write_adr ,data,done  ,read1, rea
     reg  read1_valid ;
     reg  read2_valid ;
     reg  write_valid ;
-    //reg signed [15:0] input_data;
-    //reg  adder_valid ;
+
     output signed [15:0] read1;
     output signed [15:0] read2;
-    //output signed [15:0] write_out;
     wire signed [15:0] shift_output;
     wire signed [15:0] read1;
     wire signed [15:0] read2;
@@ -43,11 +41,9 @@ module process(clk,valid,read_adr1 ,read_adr2, write_adr ,data,done  ,read1, rea
     full_adder A(x_to_adder, y_to_adder , opcode , res, carry_out);
     shift S(num_to_shift , data , shift_output);
 
-    always @( valid or read_adr1 or read_adr2 or  write_adr or data)
+    always @( valid_instruction or read_adr1 or read_adr2 or  write_adr or data)
     begin
-       // $display("time =%d counter = %d , valid = %b , ",$time ,counter, valid);
-       // if(counter == 1) begin
-            case (valid)
+            case (valid_instruction)
                 3'b000 : begin
                     counter <=  2;
                     reg_input_data <= data;
@@ -96,30 +92,29 @@ module process(clk,valid,read_adr1 ,read_adr2, write_adr ,data,done  ,read1, rea
             done <= #8 1;
         end
          if(counter == 17) begin
-            if(valid == 3'b101 )begin
+            if(valid_instruction == 3'b101 )begin
                 opcode <= 0; x_to_adder <= read1_from_reg ; y_to_adder <= read2_from_reg ;
             end
-            if(valid == 3'b110 )begin
+            if(valid_instruction == 3'b110 )begin
                 opcode <= 1; x_to_adder <= read1_from_reg ; y_to_adder <= read2_from_reg ;
             end
-            if(valid == 3'b111 )begin
+            if(valid_instruction == 3'b111 )begin
                 num_to_shift <= read1_from_reg ; 
             end
         end
         if(counter == 1)begin
-            if(valid == 3'b101 || valid == 3'b110  )begin
+            if(valid_instruction == 3'b101 || valid_instruction == 3'b110  )begin
                 reg_input_data <= res ;
                 read1_valid <=0; read2_valid <=0;  write_valid <= 1;
             end
-            if(valid == 3'b111 )begin
+            if(valid_instruction == 3'b111 )begin
                 reg_input_data <= shift_output ;
                 read1_valid <=0; read2_valid <=0;  write_valid <= 1;
             end
         end
     end
 
-   // assign write_out = res;
-    assign  read1 = (valid == 3'b101 || valid == 3'b110)? res: read1_from_reg;
-    assign  read2 = (valid == 3'b111)? shift_output : read2_from_reg;
+    assign  read1 = (valid_instruction == 3'b101 || valid_instruction == 3'b110)? res: read1_from_reg;
+    assign  read2 = (valid_instruction == 3'b111)? shift_output : read2_from_reg;
 
 endmodule
