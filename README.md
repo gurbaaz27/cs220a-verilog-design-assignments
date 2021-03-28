@@ -64,10 +64,16 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 ├── 7
 │   ├── A7Q1_decoder.v
 │   ├── A7Q1_top.v
+│   ├── A7Q2_header.h
+│   ├── A7Q2_process.v
+│   ├── A7Q2_register_file.v
 │   ├── A7Q2_top.v
 │   ├── assignment7.pdf
-│   └── q1
+│   ├── out1.txt
+│   ├── out2.txt
+│   ├── q1
+│   └── q2
 └── README.md
 
-7 directories, 58 files
+7 directories, 64 files
 ```
