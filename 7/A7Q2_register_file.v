@@ -1,5 +1,3 @@
-
-
 module register_file(clk, read1Addr, read2Addr, writeAddr, writeValue, read1Valid, read2Valid, writeValid, read1Value, read2Value);
 
    input clk;
