@@ -1,55 +1,73 @@
 # CS220 Design Assignments
 Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. Mainak Chaudhuri](https://www.cse.iitk.ac.in/users/mainakc/2021Spring/lectures220.html/).
 
-. <br>
-├── 1<br>
-│   ├── A1Q1_eight_bit_adder_top.v<br>
-│   ├── A1Q1_eight_bit_adder.v<br>
-│   ├── A1Q1_one_bit_full_adder.v<br>
-│   ├── A1Q2_eight_bit_comparator_top.v<br>
-│   ├── A1Q2_eight_bit_comparator.v<br>
-│   ├── A1Q2_one_bit_comparator.v<br>
-│   ├── Problem.txt<br>
-│   └── README.md<br>
-├── 2<br>
-│   ├── A2Q1_decoder3to8.v<br>
-│   ├── A2Q1_encoder8to3.v<br>
-│   ├── A2Q1_top.v<br>
-│   ├── A2Q2_priority_encoder8to3.v<br>
-│   ├── A2Q2_top.v<br>
-│   ├── A2Q3_blink.v<br>
-│   ├── A2Q3_top.v<br>
-│   ├── A2Q4_rotate.v<br>
-│   ├── A2Q4_top.v<br>
-│   ├── Problem.txt<br>
-│   └── README.md<br>
-├── 3<br>
-│   ├── A3Q1_read_top.v<br>
-│   ├── A3Q1_read.v<br>
-│   ├── A3Q2_fsm_top.v<br>
-│   ├── A3Q2_fsm.v<br>
-│   ├── Problem.txt<br>
-│   ├── README.md<br>
-├── 4<br>
-│   ├── A4Q1_eight_bit_adder.v<br>
-│   ├── A4Q1_one_bit_adder.v<br>
-│   ├── A4Q1_top.v<br>
-│   ├── A4Q2_compute_coordinates.v<br>
-│   ├── A4Q2_five_bit_adder.v<br>
-│   ├── A4Q2_one_bit_adder.v<br>
-│   ├── A4Q2.png<br>
-│   ├── A4Q2_top.v<br>
-│   ├── Problem.txt<br>
-│   └── README.md<br>
-├── 5<br>
-│   ├── A5Q1_fsm.v<br>
-│   ├── A5Q1_top.v<br>
-│   ├── A5Q2_compare.v<br>
-│   ├── A5Q2_compute_index.v<br>
-│   ├── A5Q2_top.v<br>
-│   ├── assignment5.pdf<br>
-│   ├── Makefile<br>
-│   ├── q1-diagram.png<br>
-│   └── q1.jpeg<br>
-│   └── README.md<br>
-└── README.md<br>
+```
+.
+├── 1
+│   ├── A1Q1_eight_bit_adder_top.v
+│   ├── A1Q1_eight_bit_adder.v
+│   ├── A1Q1_one_bit_full_adder.v
+│   ├── A1Q2_eight_bit_comparator_top.v
+│   ├── A1Q2_eight_bit_comparator.v
+│   ├── A1Q2_one_bit_comparator.v
+│   ├── Problem.txt
+│   └── README.md
+├── 2
+│   ├── A2Q1_decoder3to8.v
+│   ├── A2Q1_encoder8to3.v
+│   ├── A2Q1_top.v
+│   ├── A2Q2_priority_encoder8to3.v
+│   ├── A2Q2_top.v
+│   ├── A2Q3_blink.v
+│   ├── A2Q3_top.v
+│   ├── A2Q4_rotate.v
+│   ├── A2Q4_top.v
+│   ├── Problem.txt
+│   └── README.md
+├── 3
+│   ├── A3Q1_read_top.v
+│   ├── A3Q1_read.v
+│   ├── A3Q2_fsm_top.v
+│   ├── A3Q2_fsm.v
+│   ├── Problem.txt
+│   └── README.md
+├── 4
+│   ├── A4Q1_eight_bit_adder.v
+│   ├── A4Q1_one_bit_adder.v
+│   ├── A4Q1_top.v
+│   ├── A4Q2_compute_coordinates.v
+│   ├── A4Q2_five_bit_adder.v
+│   ├── A4Q2_one_bit_adder.v
+│   ├── A4Q2.png
+│   ├── A4Q2_top.v
+│   ├── Problem.txt
+│   └── README.md
+├── 5
+│   ├── A5Q1_fsm.v
+│   ├── A5Q1_top.v
+│   ├── A5Q2_compare.v
+│   ├── A5Q2_compute_index.v
+│   ├── A5Q2_top.v
+│   ├── assignment5.pdf
+│   ├── Makefile
+│   ├── q1-diagram.png
+│   ├── q1.jpeg
+│   └── README.md
+├── 6
+│   ├── 16_bit_adder.v
+│   ├── 1_bit_adder.v
+│   ├── module.v
+│   ├── out
+│   ├── process.v
+│   ├── shift.v
+│   └── top.v
+├── 7
+│   ├── A7Q1_decoder.v
+│   ├── A7Q1_top.v
+│   ├── A7Q2_top.v
+│   ├── assignment7.pdf
+│   └── q1
+└── README.md
+
+7 directories, 58 files
+```
