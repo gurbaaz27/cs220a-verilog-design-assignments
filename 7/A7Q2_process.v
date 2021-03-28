@@ -1,10 +1,10 @@
 `include "A7Q2_header.h"
-module process(clk, memory , program_counter);
+module process(clk);
 
-    input [31:0] memory;
     input clk;
-    
-    output reg [2:0] program_counter;
+
+    reg [31:0] memory [0:6];
+    reg [2:0] program_counter;
 
     reg [2:0] counter;
     reg [2:0] state;
@@ -27,8 +27,18 @@ module process(clk, memory , program_counter);
     reg instruction_valid ;
     wire [7:0] read1Value;
     wire [7:0] read2Value;
-
+    
     initial begin
+        $display("*************\n**DEBUGGING**\n*************");
+
+        memory[0] = {6'h9,5'd0,5'd1,16'd45};                 // I
+        memory[1] = {6'h9,5'd0,5'd2,-16'd20};                // I
+        memory[2] = {6'h9,5'd0,5'd3,-16'd60};                // I
+        memory[3] = {6'h9,5'd0,5'd4,16'd30};                 // I    
+        memory[4] = {6'h0,5'd1,5'd2,5'd5,5'd0,6'h21};        // R          
+        memory[5] = {6'h0,5'd3,5'd4,5'd6,5'd0,6'h21};        // R              
+        memory[6] = {6'h0,5'd5,5'd6,5'd5,5'd0,6'h23};        // R  
+
         program_counter = 0;
         state = 0;
         counter = 0;
@@ -46,7 +56,7 @@ module process(clk, memory , program_counter);
 
         case (state) 
             0:begin
-                instruction = memory;
+                instruction = memory[program_counter];
                 $display("instruction: %b", instruction);
                 program_counter <= program_counter + 1;
                 instruction_valid = 0;
@@ -60,7 +70,6 @@ module process(clk, memory , program_counter);
                 $display("program counter: %d", program_counter);
                 counter = 2;
                 if(instruction[31:26] == 6'h0) begin
-                    instruction_valid = 1;
                     read1Addr = instruction [25:21];
                     read2Addr = instruction [20:16];
                     writeAddr = instruction [15:11];
@@ -78,7 +87,6 @@ module process(clk, memory , program_counter);
                     end
                 end
                 else if(instruction[31:26] == 6'h9)begin
-                    instruction_valid = 1;
                     $display("Operation: addiu");
                     read1Addr = instruction [25:21];
                     writeAddr = instruction [20:16];
@@ -108,8 +116,19 @@ module process(clk, memory , program_counter);
                 state <= 3;
             end
             3:begin
+                if(instruction[31:26] == 6'h0) begin
+                    if(instruction[5:0] == 6'h21 )begin
+                        instruction_valid = 1;
+                    end
+                    else if(instruction[5:0] == 6'h23 )begin
+                        instruction_valid = 1;
+                    end
+                end
+                else if(instruction[31:26] == 6'h9)begin
+                    instruction_valid = 1;
+                end
                 $display("operand1, operand2: %d, %d", operand1 , operand2 );
-                if(instruction_valid == 1 )begin
+                if(instruction_valid == 1)begin
                     if(opcode==1)begin
                         res <= operand1 + operand2;
                     end

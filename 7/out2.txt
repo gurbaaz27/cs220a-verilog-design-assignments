@@ -1,0 +1,63 @@
+*************
+**DEBUGGING**
+*************
+instruction: 00100100000000010000000000101101
+program counter: 1
+Operation: addiu
+readadr1, readadr2, writeadr:  0,  x ,  1
+operand1, operand2:    0,   45
+result:   45
+would write to destination register
+-----------------
+instruction: 00100100000000101111111111101100
+program counter: 2
+Operation: addiu
+readadr1, readadr2, writeadr:  0,  x ,  2
+operand1, operand2:    0,  -20
+result:  -20
+would write to destination register
+-----------------
+instruction: 00100100000000111111111111000100
+program counter: 3
+Operation: addiu
+readadr1, readadr2, writeadr:  0,  x ,  3
+operand1, operand2:    0,  -60
+result:  -60
+would write to destination register
+-----------------
+instruction: 00100100000001000000000000011110
+program counter: 4
+Operation: addiu
+readadr1, readadr2, writeadr:  0,  x ,  4
+operand1, operand2:    0,   30
+result:   30
+would write to destination register
+-----------------
+instruction: 00000000001000100010100000100001
+program counter: 5
+operation: addu
+readadr1, readadr2, writeadr:  1,  2 ,  5
+operand1, operand2:   45,  -20
+result:   25
+would write to destination register
+-----------------
+instruction: 00000000011001000011000000100001
+program counter: 6
+operation: addu
+readadr1, readadr2, writeadr:  3,  4 ,  6
+operand1, operand2:  -60,   30
+result:  -30
+would write to destination register
+-----------------
+instruction: 00000000101001100010100000100011
+program counter: 7
+operation: subu
+readadr1, readadr2, writeadr:  5,  6 ,  5
+operand1, operand2:   25,  -30
+result:   55
+would write to destination register
+-----------------
+**********
+**FINISH**
+**********
+contents of OUTPUT_REG:   55
