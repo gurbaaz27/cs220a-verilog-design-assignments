@@ -3,13 +3,12 @@ module top;
 
     reg clk;
     reg [31:0] memory [0:6];
-    reg [2:0] state;
-    reg [2:0] program_counter;
+    //reg [2:0] state;
+    wire [2:0] program_counter;
     
     // wire signed [15:0] read1;
     // wire signed [15:0] read2;  
     // reg signed [15:0] data;
-
     // reg [2:0] instruction_array [8:0];
     // reg [4:0] input_adr1_array [8:0];
     // reg [4:0] input_adr2_array [8:0];
@@ -17,10 +16,10 @@ module top;
     // reg signed [15:0] data_array [8:0];
     // reg [4:0] done_counter; 
     // reg [5:0] num_instructions;
-
+    
     initial begin
-        program_counter = 0;
-
+        //program_counter = 0;
+        //state = 0;
         memory[0] = {6'h9,5'b0,5'b00001,16'd45};                             // I
         memory[1] = {6'h9,5'b0,5'b00010,-16'd20};                            // I
         memory[2] = {6'h9,5'b0,5'b00011,-16'd60};                            // I
@@ -35,13 +34,14 @@ module top;
         clk=0;
         #5
         clk=1;
-        program_counter <= program_counter + 1;
+        //program_counter <= program_counter + 1;
         #5
         clk=0;
         end
     end
 
-    process PROCESS(clk, memory[program_counter], state);
+    process PROCESS(clk, memory[program_counter] , program_counter );
+    
 
     // always @(posedge done)
     // begin
@@ -82,7 +82,14 @@ module top;
     //         end
     // end
 
+    always @(posedge clk)begin
+       // $display("%b",memory[program_counter]);
+    end
 
+   initial begin
+       #1200
+       $finish;
+   end
     
     
 endmodule

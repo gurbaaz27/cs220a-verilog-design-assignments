@@ -1,22 +1,22 @@
-`include "A7Q2_state_defs.h"
 
-module register_file(clk, current_state, read1Addr, read2Addr, writeAddr, writeValue, read1Valid, read2Valid, writeValid, read1Value, read2Value);
+
+module register_file(clk, read1Addr, read2Addr, writeAddr, writeValue, read1Valid, read2Valid, writeValid, read1Value, read2Value);
 
    input clk;
    input [1:0] current_state;
    input [4:0] read1Addr;
    input [4:0] read2Addr;
    input [4:0] writeAddr;
-   input [15:0] writeValue;
+   input [7:0] writeValue;
    input read1Valid;
    input read2Valid;
    input writeValid;
 	
-   output [15:0] read1Value;
-   output [15:0] read2Value;
+   output [7:0] read1Value;
+   output [7:0] read2Value;
 	
-   reg [15:0] read1Value;
-   reg [15:0] read2Value;
+   reg [7:0] read1Value;
+   reg [7:0] read2Value;
 	
    reg [7:0] regfile [0:31];
 	
@@ -56,8 +56,8 @@ module register_file(clk, current_state, read1Addr, read2Addr, writeAddr, writeV
    end
 	
    always @ (posedge clk) begin
-      if (current_state == `STATE_RF_RW) begin
-         if (read1Valid == 1) begin
+    //  if (current_state == `STATE_RF_RW) begin
+   if (read1Valid == 1) begin
 	    read1Value <= regfile[read1Addr];
 	 end
 	 if (read2Valid == 1) begin
@@ -66,10 +66,10 @@ module register_file(clk, current_state, read1Addr, read2Addr, writeAddr, writeV
 	 if (writeValid == 1) begin
 	    regfile[writeAddr] <= writeValue;
 	 end
-      end
-      else if (current_state == `STATE_RF_W) begin
-         regfile[writeAddr] <= writeValue;
-      end
+     // end
+     // else if (current_state == `STATE_RF_W) begin
+     //    regfile[writeAddr] <= writeValue;
+     // end
    end
 
 endmodule
