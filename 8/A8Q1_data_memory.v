@@ -32,6 +32,7 @@ module data_memory(clk, state, opcode, data_addr, result_lw);
    always @ (posedge clk) begin
       if (state == `STATE_DM) begin   
          if (opcode == `OP_LW) begin
+            $display("yesss, %d",$time);
 	         result_lw <= `PROP_DELAY data_mem[data_addr];
 	      end        
       end

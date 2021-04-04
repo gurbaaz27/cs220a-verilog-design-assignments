@@ -82,9 +82,14 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_JAL) begin
-            result <= `PROP_DELAY program_counter + 1;
+            result <= program_counter ;
 	         program_counter <= `PROP_DELAY imm[7:0];
             instruction_invalid <= `PROP_DELAY 0;
+           
+          
+             $display("program_counter:", result);
+             $display("program_counter: %d", program_counter);
+        
 	      end
          else if (opcode == `OP_LW) begin
 	         data_addr <= `PROP_DELAY rsv + imm[15:0];

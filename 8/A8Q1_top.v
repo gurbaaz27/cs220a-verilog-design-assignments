@@ -45,4 +45,9 @@ module top;
       $finish;
    end
 
+   initial begin
+      #400
+      $finish;
+   end
+
 endmodule
