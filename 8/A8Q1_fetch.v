@@ -12,6 +12,9 @@ module fetch(clk, state, program_counter, instruction);
    reg [31:0] ins_mem [0:13];
 	
    initial begin
+      program_counter = 12;
+      instruction = 0;
+
       ins_mem[0] = 32'b001001_00000_00010_0000_0000_0000_0000;    // addiu $2, $0, 0    // opcode: 0x9
       ins_mem[1] = 32'b001001_00000_00011_0000_0000_0000_0000;    // addiu $3, $0, 0
       ins_mem[2] = 32'b000000_00001_00011_00100_00000_101010;     // slt   $4, $3, $1   // opcode: 0x0, func: 0x2a

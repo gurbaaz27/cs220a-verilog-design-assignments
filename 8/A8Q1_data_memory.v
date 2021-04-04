@@ -1,13 +1,13 @@
 `include "A8Q1_state_defs.h"
 `define PROP_DELAY #2
 
-module data_memory(clk, state, data_addr, data);
+module data_memory(clk, state, data_addr, result);
 
    input clk;
    input [2:0] state;
-	input data_addr;
+	input [7:0] data_addr;
 
-   output reg [7:0] data;
+   output reg [7:0] result;
 	
    reg [7:0] data_mem [0:10];
 	
@@ -29,7 +29,7 @@ module data_memory(clk, state, data_addr, data);
 	
    always @ (posedge clk) begin
       if (state == `STATE_DM) begin         
-        data <= `PROP_DELAY data_mem[data_addr];
+        result <= `PROP_DELAY data_mem[data_addr];
       end
    end
 
