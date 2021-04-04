@@ -21,17 +21,15 @@ module decode(clk, state, instruction, opcode, rs, rt, rd, imm, func, jump_targe
       if (state == `STATE_ID) begin
          opcode <= `PROP_DELAY instruction[31:26];
          rs <= `PROP_DELAY instruction[25:21];
-         rt <= `PROP_DELAY instruction[20:16];
          imm <= `PROP_DELAY instruction[15:0];
          func <= `PROP_DELAY instruction[5:0];
          jump_target <= `PROP_DELAY instruction[25:0];
-
+         rd <= `PROP_DELAY instruction[15:11];
          if (instruction[31:26] == `OP_JAL) begin
-            rd <= `PROP_DELAY 31;
-            // $display("YES");
+            rt <= `PROP_DELAY 31; 
 	      end
          else begin
-            rd <= `PROP_DELAY instruction[15:11];
+            rt <= `PROP_DELAY instruction[20:16];
          end
       end
    end
