@@ -46,14 +46,14 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
 
    always @ (posedge clk) begin
       if (state == `STATE_IF) begin
-         $display("passing new instruction pc: %d", program_counter);
          instruction <= `PROP_DELAY ins_mem[program_counter];
 	      program_counter <= `PROP_DELAY program_counter + 1;
       end
    end
+
 	
    always @ (posedge clk) begin
-      // $display("opcode %d, function->%d",opcode,func);
+      
       if (state == `STATE_EX) begin
          if ((opcode == `OP_RFORM) && (func == `FUNC_ADDU)) begin
             result <= `PROP_DELAY rsv + rtv;
@@ -61,17 +61,13 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
 	      end
 	      else if ((opcode == `OP_RFORM) && (func == `FUNC_SLT)) begin
 	         result <= `PROP_DELAY $signed(rsv) < $signed(rtv);
-            //$display("-------slt-------%d",result);
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if ((opcode == `OP_RFORM) && (func == `FUNC_JR)) begin
-            $display("RSV: %d", rsv);
 	         program_counter <= `PROP_DELAY rsv;
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_BEQ) begin
-            $display("program_counter: %d", program_counter);
-            $display("rsv %d, rst %d" ,rsv ,rtv);
             if(rsv == rtv) begin
                program_counter <= `PROP_DELAY program_counter + imm[7:0] - 1;
             end
@@ -86,12 +82,7 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
          else if (opcode == `OP_JAL) begin
             result <= program_counter ;
 	         program_counter <= `PROP_DELAY imm[7:0];
-            instruction_invalid <= `PROP_DELAY 0;
-           
-          
-             //$display("program_counter:", result);
-            // $display("program_counter: %d", program_counter);
-        
+            instruction_invalid <= `PROP_DELAY 0;        
 	      end
          else if (opcode == `OP_LW) begin
 	         data_addr <= `PROP_DELAY rsv + imm[15:0];

@@ -1,6 +1,6 @@
-`include "A8Q1_state_defs.h"
+`include "A8Q2_state_defs.h"
 
-`define MAX_PC 14
+`define MAX_PC 11
 `define PROP_DELAY #2
 
 module state_control(clk, program_counter, state);
@@ -14,7 +14,6 @@ module state_control(clk, program_counter, state);
    end
 	
    always @ (posedge clk) begin
-     // $display("t:%d, sc->%d, pc->%d", $time, state, program_counter);
       if ((state == `STATE_WB) && (program_counter < `MAX_PC)) begin
          state <= `PROP_DELAY `STATE_IF;
       end

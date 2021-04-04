@@ -1,5 +1,5 @@
-`include "A8Q1_state_defs.h"
-`include "A8Q1_opcode_defs.h"
+`include "A8Q2_state_defs.h"
+`include "A8Q2_opcode_defs.h"
 
 `define PROP_DELAY #2
 
@@ -25,6 +25,7 @@ module decode(clk, state, instruction, opcode, rs, rt, rd, imm, func, jump_targe
          func <= `PROP_DELAY instruction[5:0];
          jump_target <= `PROP_DELAY instruction[25:0];
          rd <= `PROP_DELAY instruction[15:11];
+         
          if (instruction[31:26] == `OP_JAL) begin
             rt <= `PROP_DELAY 31; 
 	      end

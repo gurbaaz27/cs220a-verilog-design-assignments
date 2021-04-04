@@ -1,6 +1,6 @@
-`include "A8Q1_state_defs.h"
+`include "A8Q2_state_defs.h"
 
-`define OUTPUT_REG 2
+`define OUTPUT_REG 4
 `define PROP_DELAY #2
 
 module register_file(clk, state, rs, rt, rd, result, instruction_invalid, rsv, rtv, done);
@@ -35,7 +35,6 @@ module register_file(clk, state, rs, rt, rd, result, instruction_invalid, rsv, r
 	      rtv <= `PROP_DELAY regfile[rt];
       end
       else if ((state == `STATE_WB) && (rd != 0) && (instruction_invalid == 0)) begin
-          $display("write--- rd : %d , %d result ", rd,result);
          regfile[rd] <= `PROP_DELAY result;
       end
       else if (state == `STATE_OUTPUT) begin
@@ -44,6 +43,4 @@ module register_file(clk, state, rs, rt, rd, result, instruction_invalid, rsv, r
       end
    end
 
-  
-	
 endmodule
