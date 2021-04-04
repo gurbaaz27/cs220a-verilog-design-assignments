@@ -1,0 +1,3 @@
+`define FUNC_ADDU 6'b100001
+`define FUNC_SLT  6'b101010
+`define FUNC_JR   6'b001000
