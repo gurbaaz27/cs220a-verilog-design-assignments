@@ -46,14 +46,14 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
 
    always @ (posedge clk) begin
       if (state == `STATE_IF) begin
-         $display("pc: %d", program_counter);
+         $display("passing new instruction pc: %d", program_counter);
          instruction <= `PROP_DELAY ins_mem[program_counter];
 	      program_counter <= `PROP_DELAY program_counter + 1;
       end
    end
 	
    always @ (posedge clk) begin
-      // $display("time-> %d, state->%d",$time,state);
+       $display("opcode %d, function->%d",opcode,func);
       if (state == `STATE_EX) begin
          if ((opcode == `OP_RFORM) && (func == `FUNC_ADDU)) begin
             result <= `PROP_DELAY rsv + rtv;
@@ -71,13 +71,13 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
          else if (opcode == `OP_BEQ) begin
             $display("program_counter: %d", program_counter);
             if(rsv == rtv) begin
-               program_counter <= `PROP_DELAY program_counter + imm[7:0];
+               program_counter <= `PROP_DELAY program_counter + imm[7:0] - 1;
             end
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_BNE) begin
             if(rsv != rtv) begin
-               program_counter <= `PROP_DELAY program_counter + imm[7:0];
+               program_counter <= `PROP_DELAY program_counter + imm[7:0] - 1;
             end
             instruction_invalid <= `PROP_DELAY 0;
 	      end

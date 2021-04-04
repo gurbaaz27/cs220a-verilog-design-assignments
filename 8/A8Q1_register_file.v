@@ -29,7 +29,7 @@ module register_file(clk, state, rs, rt, rd, result, instruction_invalid, rsv, r
    end
 	
    always @ (posedge clk) begin
-      $display("state %d --- rd : %d , %d result ",state, rd,result);
+     // $display("state %d --- rd : %d , %d result ",state, rd,result);
       if (state == `STATE_RF) begin
          rsv <= `PROP_DELAY regfile[rs];
 	      rtv <= `PROP_DELAY regfile[rt];
@@ -41,6 +41,11 @@ module register_file(clk, state, rs, rt, rd, result, instruction_invalid, rsv, r
          rsv <= `PROP_DELAY regfile[`OUTPUT_REG];
          done <= `PROP_DELAY 1;
       end
+   end
+
+   initial begin
+      #1000
+     $finish;
    end
 	
 endmodule
