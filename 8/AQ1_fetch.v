@@ -33,6 +33,7 @@ module fetch(clk, state, program_counter, instruction);
 	
    always @ (posedge clk) begin
       if (state == `STATE_IF) begin
+         $display("pc: %d", program_counter);
          instruction <= `PROP_DELAY ins_mem[program_counter];
 	      program_counter <= `PROP_DELAY program_counter + 1;
       end

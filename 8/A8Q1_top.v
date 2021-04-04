@@ -16,6 +16,7 @@ module top;
    wire [5:0] func;
    wire [25:0] jump_target;
    wire [7:0] result;
+   wire [7:0] result_lw;
    wire instruction_invalid;
    wire [7:0] rsv;
    wire [7:0] rtv;
@@ -25,9 +26,9 @@ module top;
    state_control SC(clk, PC, state);
    // fetch IF(clk, state, PC, instruction);
    decode ID(clk, state, instruction, opcode, rs, rt, rd, imm, func, jump_target);
-   register_file RF(clk, state, rs, rt, (opcode == `OP_RFORM) ? rd : rt, result, instruction_invalid, rsv, rtv, done);
+   register_file RF(clk, state, rs, rt, (opcode == `OP_RFORM) ? rd : rt, (opcode == `OP_LW) ? result_lw : result, instruction_invalid, rsv, rtv, done);
    execute EX(clk, state, opcode, rsv, rtv, imm, func, jump_target, PC, data_addr, result, instruction_invalid, instruction);
-   data_memory DM(clk, state, data_addr, result);
+   data_memory DM(clk, state, opcode, data_addr, result_lw);
 	
    initial begin
       forever begin

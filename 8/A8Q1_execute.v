@@ -64,15 +64,21 @@ module execute(clk, state, opcode, rsv, rtv, imm, func, jump_target, program_cou
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if ((opcode == `OP_RFORM) && (func == `FUNC_JR)) begin
+            $display("RSV: %d", rsv);
 	         program_counter <= `PROP_DELAY rsv;
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_BEQ) begin
-	         program_counter <= `PROP_DELAY (rsv == rtv) ? program_counter + imm[7:0] : program_counter;
+            $display("program_counter: %d", program_counter);
+            if(rsv == rtv) begin
+               program_counter <= `PROP_DELAY program_counter + imm[7:0];
+            end
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_BNE) begin
-	         program_counter <= `PROP_DELAY (rsv != rtv) ? program_counter + imm[7:0] : program_counter;
+            if(rsv != rtv) begin
+               program_counter <= `PROP_DELAY program_counter + imm[7:0];
+            end
             instruction_invalid <= `PROP_DELAY 0;
 	      end
          else if (opcode == `OP_JAL) begin

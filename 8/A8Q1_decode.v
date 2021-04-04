@@ -28,6 +28,7 @@ module decode(clk, state, instruction, opcode, rs, rt, rd, imm, func, jump_targe
 
          if (instruction[31:26] == `OP_JAL) begin
             rd <= `PROP_DELAY 31;
+            // $display("YES");
 	      end
          else begin
             rd <= `PROP_DELAY instruction[15:11];
