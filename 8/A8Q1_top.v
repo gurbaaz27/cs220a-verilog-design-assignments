@@ -26,7 +26,7 @@ module top;
    state_control SC(clk, PC, state);
    // fetch IF(clk, state, PC, instruction);
    decode ID(clk, state, instruction, opcode, rs, rt, rd, imm, func, jump_target);
-   register_file RF(clk, state, rs, rt, (opcode == `OP_RFORM) ? rd : rt, (opcode == `OP_LW) ? result_lw : result, instruction_invalid, rsv, rtv, done);
+   register_file RF(clk, state, rs, rt, (opcode == `OP_RFORM) ? rd : ((opcode == `OP_BEQ) || (opcode == `OP_BNE ) ? 5'b0 : rt ), (opcode == `OP_LW) ? result_lw : result, instruction_invalid, rsv, rtv, done);
    execute EX(clk, state, opcode, rsv, rtv, imm, func, jump_target, PC, data_addr, result, instruction_invalid, instruction);
    data_memory DM(clk, state, opcode, data_addr, result_lw);
 	
@@ -39,9 +39,11 @@ module top;
          clk = 0;
       end
    end
-
+   always @(rs or rt or rd)begin
+      $display("%d %d %d",rs,rt,rd);
+   end
    always @ (posedge done) begin
-      $display("Time: %d, output = %d", $time, rsv);
+      $display("Time: %d, output = %d", $time,$signed(rsv) );
       $finish;
    end
 

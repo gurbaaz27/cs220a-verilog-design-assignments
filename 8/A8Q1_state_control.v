@@ -14,7 +14,7 @@ module state_control(clk, program_counter, state);
    end
 	
    always @ (posedge clk) begin
-      $display("t:%d, sc->%d, pc->%d", $time, state, program_counter);
+     // $display("t:%d, sc->%d, pc->%d", $time, state, program_counter);
       if ((state == `STATE_WB) && (program_counter < `MAX_PC)) begin
          state <= `PROP_DELAY `STATE_IF;
       end
