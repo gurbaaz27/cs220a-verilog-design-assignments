@@ -14,11 +14,11 @@ main:
 
         move $s0, $v0
 
-        la $t1, arrayX
-        la $t2, arrayY
+        la $t1, arrayX           #Get address of arrayX
+        la $t2, arrayY           #Get address of arrayX
 
         move $t3, $t1
-        add $t4, $0, $0
+        add $t4, $0, $0               
 
         la $a0, Xin             # Get input entries for vector X
         li $v0, 4
@@ -26,7 +26,7 @@ main:
 
 
 read1:   
-        li $v0, 6
+        li $v0, 6                #Get input float fo arrayX
         syscall
         swc1 $f0, 0($t3)
         addi $t3, $t3, 4
@@ -42,7 +42,7 @@ read1:
 
 
 read2:   
-        li $v0, 6
+        li $v0, 6               #Get input float fo arrayY
         syscall
         swc1 $f0, 0($t3)
         addi $t3, $t3, 4
@@ -50,7 +50,7 @@ read2:
         bne $t4, $s0, read2
 
         add $t4, $0, $0
-        sub.s $f4, $f4, $f4
+        sub.s $f4, $f4, $f4     
 
 
 loop:       
@@ -58,7 +58,7 @@ loop:
         lwc1 $f2, 0($t2)
 
         mul.s $f3, $f1, $f2
-        add.s $f4, $f4, $f3
+        add.s $f4, $f4, $f3             #Add product to sum
         addi  $t4, $t4, 1
         addi  $t1, $t1, 4
         addi  $t2, $t2, 4
