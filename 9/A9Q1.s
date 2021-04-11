@@ -70,7 +70,7 @@ fib:
         #------------------------------------------------------
 
         # Calling fib(n-2)-------------------------------------
-        sub $sp, $sp, 4     # storing return address on stack
+        sub $sp, $sp, 4     # Store return address on stack
         sw $ra, 0($sp)
 
         sub $a0, $a0,2      # n-2
