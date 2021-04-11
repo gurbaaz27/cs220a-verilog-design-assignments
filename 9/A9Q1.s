@@ -10,28 +10,37 @@ syscall
 
 move $t2,$v0    # n to $t2
 
+move $t3, $0 #initialise starting variable to 1
 # Call function to get fibonnacci #n
-move $a0,$t2
-move $v0,$t2
+loop:
+addi $t3 , $t3 ,1
+move $a0,$t3
+move $v0,$t3
 jal fib     #call fib (n)
-move $t3,$v0    #result is in $t3
+move $t4,$v0    #result is in $t3
 
 # Output message and n
-la $a0,result   #Print F_
-li $v0,4
-syscall
+#la $a0,result   #Print F_
+#li $v0,4
+#syscall
 
-move $a0,$t2    #Print n
+#move $a0,$t3    #Print n
+#li $v0,1
+#syscall
+
+
+move $a0,$t4    #Print the answer
 li $v0,1
 syscall
 
+slt $t5 , $t3 , $t2
+beq $t5 , $0 , jump
 la $a0,result2  #Print =
 li $v0,4
 syscall
+jump:
 
-move $a0,$t3    #Print the answer
-li $v0,1
-syscall
+bne $t3 , $t2, loop
 
 la $a0,endl #Print '\n'
 li $v0,4
@@ -87,5 +96,5 @@ jr $ra
 .data
 prompt: .asciiz "This program calculates Fibonacci sequence with recursive functions.\nEnter a non-negative number: "
 result: .asciiz "F_"
-result2: .asciiz " = "
+result2: .asciiz " , "
 endl: .asciiz "\n"
