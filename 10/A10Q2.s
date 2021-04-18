@@ -70,7 +70,7 @@ label2:
 
 .data 
 arrayX:           .space  60
-input:            .asciiz "Assignment 10 submission by Group #9\nQ2. The following MIPS program calculates the alternate sum of elements of single-precision floating-point vector A.\nEnter the size of array n: "
+input:            .asciiz "Assignment 10 submission by Group #9\nQ2. The following MIPS program calculates the alternate sum of elements of single-precision floating-point vector A.\nEnter the size of array n: \n"
 Xin:              .asciiz "Enter the n numbers of vector A:-\n"
 Msg:              .asciiz "\n"
 Res:              .asciiz "The result is: "
