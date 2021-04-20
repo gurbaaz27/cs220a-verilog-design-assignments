@@ -1,17 +1,25 @@
 # CS220 Design Assignments
 Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. Mainak Chaudhuri](https://www.cse.iitk.ac.in/users/mainakc/2021Spring/lectures220.html/).
 
+`NOTE`: Assignment 9 and 10 are MIPS assembly assignments.
+
 ```
 .
 ├── 1
-│   ├── A1Q1_eight_bit_adder_top.v
 │   ├── A1Q1_eight_bit_adder.v
+│   ├── A1Q1_eight_bit_adder_top.v
 │   ├── A1Q1_one_bit_full_adder.v
-│   ├── A1Q2_eight_bit_comparator_top.v
 │   ├── A1Q2_eight_bit_comparator.v
+│   ├── A1Q2_eight_bit_comparator_top.v
 │   ├── A1Q2_one_bit_comparator.v
 │   ├── Problem.txt
 │   └── README.md
+├── 10
+│   ├── A10Q1.s
+│   ├── A10Q2.s
+│   └── assignment10.pdf
+├── 11
+│   └── assignment11.pdf
 ├── 2
 │   ├── A2Q1_decoder3to8.v
 │   ├── A2Q1_encoder8to3.v
@@ -25,20 +33,20 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── Problem.txt
 │   └── README.md
 ├── 3
-│   ├── A3Q1_read_top.v
 │   ├── A3Q1_read.v
-│   ├── A3Q2_fsm_top.v
+│   ├── A3Q1_read_top.v
 │   ├── A3Q2_fsm.v
+│   ├── A3Q2_fsm_top.v
 │   ├── Problem.txt
 │   └── README.md
 ├── 4
 │   ├── A4Q1_eight_bit_adder.v
 │   ├── A4Q1_one_bit_adder.v
 │   ├── A4Q1_top.v
+│   ├── A4Q2.png
 │   ├── A4Q2_compute_coordinates.v
 │   ├── A4Q2_five_bit_adder.v
 │   ├── A4Q2_one_bit_adder.v
-│   ├── A4Q2.png
 │   ├── A4Q2_top.v
 │   ├── Problem.txt
 │   └── README.md
@@ -48,16 +56,15 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── A5Q2_compare.v
 │   ├── A5Q2_compute_index.v
 │   ├── A5Q2_top.v
-│   ├── assignment5.pdf
 │   ├── Makefile
+│   ├── README.md
+│   ├── assignment5.pdf
 │   ├── q1-diagram.png
-│   ├── q1.jpeg
-│   └── README.md
+│   └── q1.jpeg
 ├── 6
 │   ├── 16_bit_adder.v
 │   ├── 1_bit_adder.v
 │   ├── module.v
-│   ├── out
 │   ├── process.v
 │   ├── shift.v
 │   └── top.v
@@ -68,12 +75,36 @@ Verilog codes of design assignments course CS220, Spring 2021 IITK under [Prof. 
 │   ├── A7Q2_process.v
 │   ├── A7Q2_register_file.v
 │   ├── A7Q2_top.v
-│   ├── assignment7.pdf
-│   ├── out1.txt
-│   ├── out2.txt
-│   ├── q1
-│   └── q2
-└── README.md
+│   └── assignment7.pdf
+├── 8
+│   ├── A8Q1
+│   │   ├── A8Q1_data_memory.v
+│   │   ├── A8Q1_decode.v
+│   │   ├── A8Q1_execute.v
+│   │   ├── A8Q1_func_defs.h
+│   │   ├── A8Q1_opcode_defs.h
+│   │   ├── A8Q1_register_file.v
+│   │   ├── A8Q1_state_control.v
+│   │   ├── A8Q1_state_defs.h
+│   │   └── A8Q1_top.v
+│   ├── A8Q2
+│   │   ├── A8Q2_data_memory.v
+│   │   ├── A8Q2_decode.v
+│   │   ├── A8Q2_execute.v
+│   │   ├── A8Q2_func_defs.h
+│   │   ├── A8Q2_opcode_defs.h
+│   │   ├── A8Q2_register_file.v
+│   │   ├── A8Q2_state_control.v
+│   │   ├── A8Q2_state_defs.h
+│   │   └── A8Q2_top.v
+│   ├── assignment8.pdf
+│   └── lec05.pdf
+├── 9
+│   ├── A9Q1.s
+│   ├── A9Q2.s
+│   └── assignment9.pdf
+├── README.md
+└── tree.txt
 
-7 directories, 64 files
+13 directories, 87 files
 ```
