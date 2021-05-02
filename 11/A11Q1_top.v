@@ -1,15 +1,16 @@
 module top;
 
     reg clk;
-    reg [31:0] multiplicand;
-    reg [31:0] multiplier;
-    reg [31:0] product;
-    reg [4:0] total_add_ops;
-    reg [4:0] total_sub_ops;
-    reg done;
+    reg signed [31:0] multiplicand;
+    reg signed [31:0] multiplier;
+    reg signed [31:0] product;
+    wire [4:0] total_add_ops;
+    wire [4:0] total_sub_ops;
+    wire done;
     reg abit;
+    reg [3:0] idx;
 
-    booth BOOTH (clk, multiplicand, multiplier, product, total_add_ops, total_sub_ops, done, abit);
+    booth BOOTH (clk, multiplicand, multiplier, new_bit, product, total_add_ops, total_sub_ops, done);
 
     always @ ( negedge clk ) begin
         if (done == 1) begin
@@ -19,12 +20,7 @@ module top;
     end
 
     initial begin
-        product = 0;
-        total_add_ops = 0;
-        total_sub_ops = 0;
-        done = 0;
-        #110
-        $finish;
+        idx = 0;
     end
 
     initial begin
