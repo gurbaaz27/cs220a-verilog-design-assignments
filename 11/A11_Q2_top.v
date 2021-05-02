@@ -11,18 +11,45 @@ module top;
     wire done;
     reg abit;
     wire signed [31:0] rem;
-    
+    reg [31:0] dividend_mem [0:10];
+    reg [31:0] divisor_mem [0:10];
+    reg [4:0] m_mem [0:10];
+    reg [4:0] n_mem [0:10];
+    reg [4:0] counter;
     
     mod M(clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, done,abit,rem);
     always @ ( negedge clk ) begin
         if (done == 1) begin
             $display("     time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d |||||| +: %d, -: %d",$time,dividend,divisor,quotient , rem,total_add_ops,total_sub_ops);   
-            abit <= #2 1; dividend = 153  ; divisor = 10 ; m = 8 ; n =4;
+            abit <= #2 1; 
+             counter = counter+1;
+             if(counter < 10) begin
+                 dividend = dividend_mem[counter]  ; divisor = divisor_mem[counter] ; m =  m_mem[counter] ; n =n_mem[counter];
+             end else begin
+                 $finish;
+             end
+            
         end
         
     end
      always @(negedge clk)begin
         abit <= 0;
+    end
+    initial begin
+        counter = 0;
+        abit <= #2 1;
+        dividend_mem[0] =  153  ; divisor_mem[0] = 10;  m_mem[0] = 8 ; n_mem[0] =4;
+        dividend_mem[1] =  70  ; divisor_mem[1] = 10;  m_mem[1] = 7 ; n_mem[1] =4;
+        dividend_mem[2] =  1  ; divisor_mem[2] = 1;  m_mem[2] = 1 ; n_mem[2] =1;
+        dividend_mem[3] =  128  ; divisor_mem[3] = 2;  m_mem[3] = 8 ; n_mem[3] =2;
+        dividend_mem[4] =  32  ; divisor_mem[4] = 4;  m_mem[4] = 6 ; n_mem[4] =3;
+        dividend_mem[5] =  11  ; divisor_mem[5] = 4;  m_mem[5] = 4 ; n_mem[5] =3;
+        dividend_mem[6] =  77  ; divisor_mem[6] = 11;  m_mem[6] = 7 ; n_mem[6] =4;
+        dividend_mem[7] =  153  ; divisor_mem[7] = 15;  m_mem[7] = 8 ; n_mem[7] =4;
+        dividend_mem[8] =  203  ; divisor_mem[8] = 13;  m_mem[8] = 8 ; n_mem[8] =4;
+        dividend_mem[9] =  150  ; divisor_mem[9] = 9;  m_mem[9] = 8 ; n_mem[9] =4;
+
+        dividend = dividend_mem[counter]  ; divisor = divisor_mem[counter] ; m =  m_mem[counter] ; n =n_mem[counter];
     end
 
     initial begin
@@ -34,13 +61,7 @@ module top;
             clk = 0;
         end
     end
-     initial begin
-         #1
-      abit <= #2 1; dividend = 32  ; divisor = 4 ; m = 6 ; n =3;
-       #500
-       $finish;
-
-     end 
+     
 
 
 endmodule

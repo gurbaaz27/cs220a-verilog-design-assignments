@@ -23,17 +23,11 @@ module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, 
     end
 
 
-   
-
-
-   
-
-
     always @(posedge clk) begin
        
         done = 0;
         if(abit == 1)begin
-            $display("%g",$time);
+           // $display("%g",$time);
             quotient = 0;
             rem = dividend;
             div = divisor;
@@ -41,7 +35,7 @@ module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, 
             total_sub_ops = 0;
             counter = 0;
         end
-         $display("time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d |||||| +: %d, -: %d",$time,dividend,div,quotient , rem,total_add_ops,total_sub_ops);   
+        // $display("time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d |||||| +: %d, -: %d",$time,dividend,div,quotient , rem,total_add_ops,total_sub_ops);   
         if(counter == 0)begin
             div = div << (m-n);
         end
