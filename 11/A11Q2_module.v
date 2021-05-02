@@ -1,8 +1,8 @@
-module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, done,abit,rem);
+module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, done,new_bit,rem);
     input clk;
     input [31:0] dividend;
     input [31:0] divisor;
-    input abit;
+    input new_bit;
     input [4:0] m;
     input [4:0] n;
 
@@ -14,20 +14,16 @@ module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, 
     output reg signed [31:0] rem;
     reg signed [31:0] div;
     reg [5:0] counter;
-   
-
 
     initial begin
         counter <= 0;
         done <=0;
     end
 
-
     always @(posedge clk) begin
        
         done = 0;
-        if(abit == 1)begin
-           // $display("%g",$time);
+        if(new_bit == 1)begin
             quotient = 0;
             rem = dividend;
             div = divisor;
@@ -35,7 +31,6 @@ module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, 
             total_sub_ops = 0;
             counter = 0;
         end
-        // $display("time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d |||||| +: %d, -: %d",$time,dividend,div,quotient , rem,total_add_ops,total_sub_ops);   
         if(counter == 0)begin
             div = div << (m-n);
         end
@@ -66,6 +61,5 @@ module mod (clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, 
         end
     
     end
-
 
 endmodule

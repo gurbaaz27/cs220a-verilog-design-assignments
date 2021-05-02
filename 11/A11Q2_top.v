@@ -9,35 +9,35 @@ module top;
     reg [4:0] m;
     reg [4:0] n;
     wire done;
-    reg abit;
+    reg new_bit;
     wire signed [31:0] rem;
-    reg [31:0] dividend_mem [0:10];
-    reg [31:0] divisor_mem [0:10];
-    reg [4:0] m_mem [0:10];
-    reg [4:0] n_mem [0:10];
-    reg [4:0] counter;
+    reg [31:0] dividend_mem [0:9];
+    reg [31:0] divisor_mem [0:9];
+    reg [4:0] m_mem [0:9];
+    reg [4:0] n_mem [0:9];
+    reg [3:0] counter;
     
-    mod M(clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, done,abit,rem);
+    mod M(clk, dividend, divisor,m,n, quotient, total_add_ops, total_sub_ops, done,new_bit,rem);
     always @ ( negedge clk ) begin
         if (done == 1) begin
-            $display("     time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d |||||| +: %d, -: %d",$time,dividend,divisor,quotient , rem,total_add_ops,total_sub_ops);   
-            abit <= #2 1; 
-             counter = counter+1;
-             if(counter < 10) begin
-                 dividend = dividend_mem[counter]  ; divisor = divisor_mem[counter] ; m =  m_mem[counter] ; n =n_mem[counter];
-             end else begin
-                 $finish;
-             end
-            
+            $display("time=%g: dividend = %d, divisor= %d, quotient= %d, reminder= %d \t +: %d, -: %d",$time,dividend,divisor,quotient , rem,total_add_ops,total_sub_ops);   
+            new_bit <= #2 1; 
+            counter = counter+1;
+            if(counter < 10) begin
+                dividend = dividend_mem[counter]  ; divisor = divisor_mem[counter] ; m =  m_mem[counter] ; n =n_mem[counter];
+            end else begin
+                $finish;
+            end            
         end
-        
     end
-     always @(negedge clk)begin
-        abit <= 0;
+    
+    always @(negedge clk)begin
+        new_bit <= 0;
     end
+
     initial begin
         counter = 0;
-        abit <= #2 1;
+        new_bit <= #2 1;
         dividend_mem[0] =  153  ; divisor_mem[0] = 10;  m_mem[0] = 8 ; n_mem[0] =4;
         dividend_mem[1] =  70  ; divisor_mem[1] = 10;  m_mem[1] = 7 ; n_mem[1] =4;
         dividend_mem[2] =  1  ; divisor_mem[2] = 1;  m_mem[2] = 1 ; n_mem[2] =1;
@@ -53,6 +53,7 @@ module top;
     end
 
     initial begin
+        $display("CS220: Assignment#11 Group#9 Q2\n-------------------------------");
         forever begin
             clk = 0;
             #5
@@ -62,6 +63,4 @@ module top;
         end
     end
      
-
-
 endmodule
