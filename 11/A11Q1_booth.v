@@ -16,7 +16,7 @@ module booth (clk, multiplicand, multiplier, new_bit, product, total_add_ops, to
     reg curr_bit;
 
     initial begin
-        product <= 64'b0;
+        product <= 0;
         done <= 0;
         total_add_ops <= 0;
         total_sub_ops <= 0;
@@ -25,7 +25,7 @@ module booth (clk, multiplicand, multiplier, new_bit, product, total_add_ops, to
     end
     
     always @(posedge new_bit) begin
-            product <= 64'b0;
+            product <= 0;
             done <= 0;
             total_add_ops <= 0;
             total_sub_ops <= 0;
