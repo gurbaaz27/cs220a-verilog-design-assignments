@@ -36,16 +36,16 @@ module top;
         counter = 0;
         new_bit <= 1;
 
-        multiplicand_mem[0] = 1; multiplier_mem[0] = 3;
-        multiplicand_mem[1] = 55; multiplier_mem[1] = 4;
-        multiplicand_mem[2] = 2; multiplier_mem[2] = 42;
-        multiplicand_mem[3] = -10; multiplier_mem[3] = 10;
-        multiplicand_mem[4] = 5; multiplier_mem[4] = 0;
-        multiplicand_mem[5] = 0; multiplier_mem[5] = 21;
-        multiplicand_mem[6] = 30; multiplier_mem[6] = 3;
-        multiplicand_mem[7] = 100; multiplier_mem[7] = 500;
-        multiplicand_mem[8] = 17; multiplier_mem[8] = 4;
-        multiplicand_mem[9] = -5; multiplier_mem[9] = -1;     
+        multiplicand_mem[0] = -10; multiplier_mem[0] = -10;
+        multiplicand_mem[1] = -100; multiplier_mem[1] = 9;
+        multiplicand_mem[2] = 100; multiplier_mem[2] = 0;
+        multiplicand_mem[3] = 200; multiplier_mem[3] = 1;
+        multiplicand_mem[4] = 10000; multiplier_mem[4] = -1;
+        multiplicand_mem[5] = 20; multiplier_mem[5] = -9;
+        multiplicand_mem[6] = 0; multiplier_mem[6] = 0;
+        multiplicand_mem[7] = 0; multiplier_mem[7] = -1;
+        multiplicand_mem[8] = 800; multiplier_mem[8] = -900;
+        multiplicand_mem[9] = -760; multiplier_mem[9] = 128;     
 
         multiplicand = multiplicand_mem[counter]; multiplier = multiplier_mem[counter]; 
     end
